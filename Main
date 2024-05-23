@@ -1,0 +1,26 @@
+public class Main {
+  public static void main(String[] args) {
+    Book book1 = new Book("The Great Gatsby", "F. Scott Fitzgerald", 180);
+    ComicBook comic1 = new ComicBook("Harley Quin #1", "Tee Franklin", 23, "Max Sarin", "The Animated Series: The Eat. Bang! Kill. Tour" );
+    Book graphicNovel = new ComicBook("The Adventures of Captain Underpants", "Dav Pilkey", 121, "Dav Pilkey", "Captain Underpants");
+
+    System.out.println("Book");
+    System.out.println(book1);
+    System.out.println("");
+    System.out.println(book1.getTitle());
+    book1.setPages(2);
+    System.out.println("Updated Pages(how many I wish it had): " + book1.getPages());
+    book1.read(2);
+    System.out.println("");
+    System.out.println("Comic Book");
+    System.out.println(comic1);
+    System.out.println("");
+    comic1.illustrate();
+    // Polymorphism example
+    System.out.println("");
+    System.out.println("Graphic Novel");
+    System.out.println(graphicNovel);
+
+    
+  }
+}
