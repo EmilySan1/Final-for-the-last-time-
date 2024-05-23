@@ -1,0 +1,52 @@
+class ComicBook extends Book
+  {
+    private String illustrator; 
+    private String series;
+//default constructor
+    public ComicBook()
+    {
+      super();
+      this.illustrator = "unknown";
+      this.series = "unknown";
+    }
+    //constructor fr
+    public ComicBook(String title, String author, int pages, String illustrator, String series)
+    {
+      super(title, author, pages);
+      this.illustrator = illustrator;
+      this.series = series;
+    }
+
+    //getters 
+    public String getIllustrator()
+    {
+      return illustrator;
+    }
+
+    public String getSeries()
+    {
+      return series;
+    }
+
+    //setters
+    public void setIllustrator(String illustrator)
+    {
+      this.illustrator = illustrator;
+    }
+
+    public void setSeries(String series)
+    {
+      this.series = series;
+    }
+
+    //brain method 
+    public void illustrate()
+    {
+      System.out.println("The comic book: " + getTitle() + " is illustrated by " + illustrator + "");
+    }
+
+    public String toString()
+    {
+      return super.toString() + "\nIllustrator: " + illustrator + "\nSeries: " + series + " ";
+    }
+  }
