@@ -1,52 +1,38 @@
 class ComicBook extends Book
-  {
-    private String illustrator; 
+    {
+    private String illustrator;
     private String series;
-//default constructor
-    public ComicBook()
+//constructor
+    public ComicBook(String title, String author, int pages, String illustrator, String series) 
     {
-      super();
-      this.illustrator = "unknown";
-      this.series = "unknown";
+        super(title, author, pages);
+        this.illustrator = illustrator;
+        this.series = series;
     }
-    //constructor fr
-    public ComicBook(String title, String author, int pages, String illustrator, String series)
+//getters and setters
+    public String getIllustrator() 
     {
-      super(title, author, pages);
-      this.illustrator = illustrator;
-      this.series = series;
+        return illustrator;
     }
 
-    //getters 
-    public String getIllustrator()
+    public String getSeries() 
     {
-      return illustrator;
+        return series;
+    }
+//methods
+    public void illustrate() 
+    {
+        System.out.println("Illustrating comic book: " + getTitle() + " by " + getIllustrator());
+    }
+    // Overrides isComicBook method to return true for ComicBook objects
+    public boolean isComicBook() 
+    {
+        return true; 
     }
 
-    public String getSeries()
-    {
-      return series;
+//toString
+    public String toString() 
+        {
+        return super.toString() + "\nIllustrator: " + illustrator + "\nSeries: " + series;
     }
-
-    //setters
-    public void setIllustrator(String illustrator)
-    {
-      this.illustrator = illustrator;
-    }
-
-    public void setSeries(String series)
-    {
-      this.series = series;
-    }
-
-    //brain method 
-    public void illustrate()
-    {
-      System.out.println("The comic book: " + getTitle() + " is illustrated by " + illustrator + "");
-    }
-
-    public String toString()
-    {
-      return super.toString() + "\nIllustrator: " + illustrator + "\nSeries: " + series + " ";
-    }
-  }
+}
