@@ -1,26 +1,77 @@
+import java.util.Scanner;
+import java.util.Random;
 public class Main {
-  public static void main(String[] args) {
-    Book book1 = new Book("The Great Gatsby", "F. Scott Fitzgerald", 180);
-    ComicBook comic1 = new ComicBook("Harley Quin #1", "Tee Franklin", 23, "Max Sarin", "The Animated Series: The Eat. Bang! Kill. Tour" );
-    Book graphicNovel = new ComicBook("The Adventures of Captain Underpants", "Dav Pilkey", 121, "Dav Pilkey", "Captain Underpants");
+    public static void main(String[] args) 
+  {
+        Book[] books = new Book[3];
+        books[0] = new Book("The Great Gatsby", "F. Scott Fitzgerald", 180);
+        books[1] = new ComicBook("Harley Quinn", "Tee Franklin", 23, "Max Sarin", "The Animated Series: The Eat. Bang! Kill. Tour" );
+        books[2] = new ComicBook("The Adventures of Captain Underpants", "Dav Pilkey", 121, "Dav Pilkey", "Captain Underpants");
 
-    System.out.println("Book");
-    System.out.println(book1);
-    System.out.println("");
-    System.out.println(book1.getTitle());
-    book1.setPages(2);
-    System.out.println("Updated Pages(how many I wish it had): " + book1.getPages());
-    book1.read(2);
-    System.out.println("");
-    System.out.println("Comic Book");
-    System.out.println(comic1);
-    System.out.println("");
-    comic1.illustrate();
-    // Polymorphism example
-    System.out.println("");
-    System.out.println("Graphic Novel");
-    System.out.println(graphicNovel);
+        // Display initial information
+        System.out.println("Books in Library:");
+        for (Book book : books)
+          {
+            System.out.println("\n" + book);
+        }
 
-    
-  }
+        // User input to illustrate comic book
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("\nDo you want to illustrate a comic book? (yes/no)");
+        String input = scanner.nextLine();
+
+      // If-else statement based on user input
+        if ("yes".equalsIgnoreCase(input)) 
+        {
+            System.out.print("Enter the title of the comic book to illustrate: ");
+            String title = scanner.nextLine();
+            boolean comicBookFound = false;
+            for (Book book : books) 
+            {
+                if (book.isComicBook() && book.getTitle().equalsIgnoreCase(title))
+                {
+                    System.out.println("\nIllustrating comic book:");
+                    ((ComicBook) book).illustrate();
+                    comicBookFound = true;
+                    break;
+                }
+            }
+            if (!comicBookFound) 
+            {
+                System.out.println("Comic book with title \"" + title + "\" not found.");
+            }
+        }
+        else 
+        {
+            System.out.println("\nNo comic book will be illustrated.");
+        }
+
+      System.out.println();
+
+        // For loop example to display pages read for the first book
+        System.out.println("\nReading the book...");
+        for (int i = 1; i <= 20; i++) 
+        {
+            books[0].read(1); // Reading 1 page at a time
+        }
+        System.out.println("Pages read for \"" + books[0].getTitle() + "\": " + books[0].getPagesRead());
+
+        // While loop example with user input to update pages of the second book
+      Random rand = new Random();
+      int randNum = rand.nextInt(3);
+      
+        System.out.print("\nDo you want to update the pages of \"" + books[randNum].getTitle() + "\"? (yes/no): ");
+        String updateInput = scanner.nextLine();
+        if ("yes".equalsIgnoreCase(updateInput)) 
+        {
+            System.out.print("Enter new number of pages for \"" + books[randNum].getTitle() + "\": ");
+            int newPages = Integer.parseInt(scanner.nextLine());
+            books[randNum].setPages(newPages);
+            System.out.println("Updated Pages for \"" + books[randNum].getTitle() + "\": " + books[randNum].getPages());
+        } 
+        else 
+        {
+            System.out.println("Pages of \"" + books[randNum].getTitle() + "\" will not be updated.");
+        }
+    }
 }
