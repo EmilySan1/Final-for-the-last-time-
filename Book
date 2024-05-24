@@ -1,60 +1,49 @@
-class Book 
-  {
+class Book {
     private String title;
     private String author;
     private int pages;
-
-    public Book()
+    private int pagesRead;
+//constructor
+    public Book(String title, String author, int pages) 
     {
-      this.title = "Unknown";
-      this.author = "Unknown";
-      this.pages = 0;
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.pagesRead = 0;
+    }
+//getters setters
+    public String getTitle() 
+    {
+        return title;
     }
 
-    public Book(String title, String author, int pages)
+    public int getPages() 
     {
-      this.title = title;
-      this.author = author;
-      this.pages = pages;
-    }
-//getters
-    public String getTitle()
-    {
-      return this.title;
-    }
-    public String getAuthor()
-    {
-      return this.author;
-    }
-    public int getPages()
-    {
-      return this.pages;
-    }
-    //setters
-
-    public void setTitle(String title)
-    {
-      this.title = title;
+        return pages;
     }
 
-    public void setAuthor(String author)
+    public void setPages(int pages) 
     {
-      this.author = author;
+        this.pages = pages;
     }
 
-    public void setPages(int pages)
+    public int getPagesRead() 
     {
-      this.pages = pages;
+        return pagesRead;
     }
-
-    //brain method
-    public void read(int pagesRead)
+//methods
+    public void read(int pages) 
     {
-      System.out.println("You've read " + pagesRead + " pages!!");
+        this.pagesRead += pages;
     }
-    //toString
-    public String toString()
+    public boolean isComicBook()
     {
-      return "Title: " + title + "\nAuthor: " + author + "\nPages: " + pages + "";
+        return false;
     }
-  }
+//toString
+    public String toString() 
+    
+    {
+        return "Title: " + title + "\nAuthor: " + author + "\nPages: " + pages;
+    }
+}
